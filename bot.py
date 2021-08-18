@@ -1,6 +1,8 @@
 import os
 import discord
 from discord.ext import commands
+from dotenv import load_dotenv
+
 
 
 client = commands.Bot(command_prefix = '!!')
@@ -14,7 +16,6 @@ async def ping(ctx):
     await ctx.send('!Pong')
 
 
-
-#bot.py
+load_dotenv()
 client.run(os.getenv('TOKEN'))
 
