@@ -2,10 +2,12 @@ import os
 import discord
 import random
 from discord.ext import commands
+from discord import Intents, Member
 from dotenv import load_dotenv
+from PIL import Image
 
-
-client = commands.Bot(command_prefix='!!')
+intents = discord.Intents().all()
+client = commands.Bot(command_prefix='!!', intents=intents)
 
 
 @client.event
@@ -52,7 +54,7 @@ async def eightball(ctx, *, question):
 
 @client.command(aliases=['boot'])
 async def kick(ctx, member: discord.Member, *, reason=None):
-    if (not ctx.author.guild_permission.kick_members):
+    if (not ctx.author.guild_permissions.kick_members):
         await ctx.send('This command requires ``Ban Members``')
         return
     await member.kick(reason=reason)
@@ -61,7 +63,7 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 
 @client.command(aliases=['banned'])
 async def ban(ctx, member: discord.Member, *, reason=None):
-    if (not ctx.author.guild_permission.ban_members):
+    if (not ctx.author.guild_permissions.ban_members):
         await ctx.send('This command requires ``Kick Members``')
         return
     await member.ban(reason=reason)
@@ -70,7 +72,7 @@ async def ban(ctx, member: discord.Member, *, reason=None):
 
 @client.command(aliases=['forgive'])
 async def unban(ctx, *, member):
-    if (not ctx.author.guild_permission.ban_members):
+    if (not ctx.author.guild_permissions.ban_members):
         await ctx.send('This command requires ``Ban Members``')
         return
     banned_users = await ctx.guild.bans()
@@ -96,6 +98,17 @@ async def clear(ctx, amount=11):
         await ctx.channel.purge(limit=amount)
         await ctx.send('Cleared Messages')
 
+
+
+@client.command(aliases=['trump_in_the_silky'])
+async def silky(ctx):
+    await ctx.send(file=discord.File('img/silky.jpeg'))
+
+
+@client.command()
+async def merica(ctx):
+    await ctx.send(file=discord.File(random.choice(('img2/joe.jpg', 'img2/trump.jpg', 'img2/wood.jpg', 'img2/america.webp'))))
+    
 
 load_dotenv('.env')
 client.run(os.getenv('TOKEN'))
