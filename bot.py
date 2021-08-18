@@ -97,5 +97,5 @@ async def clear(ctx, amount=11):
         await ctx.send('Cleared Messages')
 
 
-load_dotenv()
+load_dotenv('.env')
 client.run(os.getenv('TOKEN'))
