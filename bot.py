@@ -38,7 +38,7 @@ async def eightball(ctx, *, question):
         'No!',
         'Signs a point to Yes!',
         'Reply Hazy, Try again.',
-        'IDK but u should subscribe to Exotix On Youtube and Follow Him On Insta mahad.ali.khan.',
+        'IDK...but Anyone can be confident with a full head of hair. But a confident bald man – there’s your diamond in the rough',
         'Better not tell you know.',
         'Cannot predict now.',
         'Concentrate and ask again.',
