@@ -4,9 +4,14 @@ import random
 from discord.ext import commands
 from discord import Intents, Member
 from dotenv import load_dotenv
-from PIL import Image
+import json
 
-intents = discord.Intents().all()
+
+os.chdir('C:\\Users\\Micahl DeRosa\\Desktop\\Bot_folder')
+
+
+
+intents = discord.Intents().all() 
 client = commands.Bot(command_prefix='!!', intents=intents)
 
 
@@ -38,9 +43,10 @@ async def eightball(ctx, *, question):
         'Outlook Good.',
         'Yes!',
         'No!',
+        ''
         'Signs a point to Yes!',
         'Reply Hazy, Try again.',
-        'IDK...but Anyone can be confident with a full head of hair. But a confident bald man – there’s your diamond in the rough',
+        'I do not have an asnswer...but Anyone can be confident with a full head of hair. But a confident bald man – there’s your diamond in the rough',
         'Better not tell you know.',
         'Cannot predict now.',
         'Concentrate and ask again.',
@@ -50,6 +56,8 @@ async def eightball(ctx, *, question):
         'Outlook not so good.',
         'Very Doubtful']
     await ctx.send(f':8ball: Question: {question}\n:8ball: Answer: {random.choice(responses)} ')
+
+
 
 
 @client.command(aliases=['boot'])
