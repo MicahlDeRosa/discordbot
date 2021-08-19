@@ -1,6 +1,7 @@
 import os
 import discord
 import random
+import platform
 from discord.ext import commands
 from discord import Intents, Member
 from dotenv import load_dotenv
@@ -18,6 +19,10 @@ client = commands.Bot(command_prefix='!!', intents=intents)
 @client.event
 async def on_ready():
     print('Jimmy is alive')
+
+@client.command(aliases=['hello'])
+async def hi(ctx):
+    await ctx.send(f'Hello {ctx.author.mention}!!')
 
 
 @client.command(aliases=['p'])
@@ -130,6 +135,16 @@ async def silky(ctx):
 async def merica(ctx):
     await ctx.send(file=discord.File(random.choice(('img2/joe.jpg', 'img2/trump.jpg', 'img2/wood.jpg', 'img2/america.webp'))))
     
+
+
+@client.command()
+async def stats(ctx):
+    pythonVersion = platform.python_version()
+    dpyVersion = discord.__version__
+    servercount = len(client.guilds)
+    memberCount = len(set(client.get_all_members()))
+    await ctx.send(f'Looks like I am in {servercount} servers with a total of {memberCount} members.\nI am currently running {pythonVersion} and discord.py {dpyVersion}')
+
 
 load_dotenv('.env')
 client.run(os.getenv('TOKEN'))
