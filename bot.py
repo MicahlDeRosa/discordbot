@@ -58,6 +58,19 @@ async def eightball(ctx, *, question):
     await ctx.send(f':8ball: Question: {question}\n:8ball: Answer: {random.choice(responses)} ')
 
 
+@client.command()
+async def quotes(ctx):
+    responses2 = [
+        'I love my dead gay son.',
+        'Where was ya, Wang? We was worried.',
+        "Shut that cunt's mouth or I'll come over there and fuckstart her head!",
+        'How am I not myself?',
+        'Welcome to Debbie Country.',
+        "I feel like I'm taking crazy pills!",
+        "Well, this piece is called 'Lick My Love Pump.'",
+        'This is the guy behind the guy behind the guy.',
+        "It ain't white boy day is it?"]
+    await ctx.send(f'{random.choice(responses2)}')
 
 
 @client.command(aliases=['boot'])
