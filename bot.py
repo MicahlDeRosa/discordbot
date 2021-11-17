@@ -20,6 +20,21 @@ client = commands.Bot(command_prefix='!!', intents=intents)
 async def on_ready():
     print('Jimmy is alive')
 
+
+#memeber has joined sever 
+@client.event 
+async def on_member_join(member):
+    responses = [
+        " If it tastes funny, don't eat it. If it looks funny, call a doctor. If it is funny, it must have been something I said.",
+        "Welcome out of the cave, my friend. It’s a bit colder out here, but the stars are just beautiful",
+        "For each and all I bid thee a grateful welcome",
+        "There is little in life so reassuring as a genuine welcome",
+        "Welcome to the present moment. Here. Now. The only moment there ever is.",
+    ]
+    print(f' Good Day {member}, {random.choice(responses)} ')   
+
+
+#say hello 
 @client.command(aliases=['hello'])
 async def hi(ctx):
     await ctx.send(f'Hello {ctx.author.mention}!!')
@@ -48,7 +63,6 @@ async def eightball(ctx, *, question):
         'Outlook Good.',
         'Yes!',
         'No!',
-        ''
         'Signs a point to Yes!',
         'Reply Hazy, Try again.',
         'I do not have an asnswer...but Anyone can be confident with a full head of hair. But a confident bald man – there’s your diamond in the rough',
@@ -63,10 +77,9 @@ async def eightball(ctx, *, question):
     await ctx.send(f':8ball: Question: {question}\n:8ball: Answer: {random.choice(responses)} ')
 
 
-@client.command()
+@client.command(aliases=['q'])
 async def quotes(ctx):
     responses2 = [
-        'I love my dead gay son.',
         'Where was ya, Wang? We was worried.',
         "Shut that cunt's mouth or I'll come over there and fuckstart her head!",
         'How am I not myself?',
